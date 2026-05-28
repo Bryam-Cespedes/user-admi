@@ -4,6 +4,8 @@ RUN apt-get update && apt-get install -y \
     unzip \
     git \
     curl \
+    nodejs \
+    npm \
     libpq-dev
 
 RUN docker-php-ext-install pdo pdo_pgsql
@@ -15,6 +17,9 @@ WORKDIR /app
 COPY . .
 
 RUN composer install
+
+RUN npm install
+RUN npm run build
 
 EXPOSE 10000
 
