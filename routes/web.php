@@ -4,6 +4,10 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
+Route::get('/', function () {
+    return redirect('/login');
+});
+
 Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::resource('usuarios', UserController::class);
